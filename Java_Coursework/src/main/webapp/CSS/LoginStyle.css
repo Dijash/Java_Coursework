@@ -1,0 +1,206 @@
+     :root {
+        --primary: #2563eb;
+        --secondary: #1e293b;
+        --accent: #22c55e;
+        --bg: #f8fafc;
+        --card: rgba(100% 100% 100% 0.40);
+        --text: #0a0d13;
+        --muted: #1c2025;
+        --border: #e2e8f0;
+      }
+
+      /* Base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Card */
+      .main {
+        width: 100%;
+        max-width: 400px;
+        background: var(--card);
+        padding: 36px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Header */
+      .form-head {
+        margin-bottom: 24px;
+      }
+
+      .form-head h1 {
+        font-size: 26px;
+        color: var(--text);
+        margin-bottom: 6px;
+      }
+
+      .form-head p {
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      /* Social */
+      .social-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .social-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: white;
+        cursor: pointer;
+        font-size: 13px;
+        font-family: "Poppins", sans-serif;
+        transition: all 0.2s ease;
+      }
+
+      .social-btn:hover {
+        border-color: var(--primary);
+        transform: translateY(-1px);
+      }
+
+      /* Divider */
+      .or-divider {
+        text-align: center;
+        font-size: 12px;
+        margin: 20px 0;
+        color: var(--muted);
+      }
+
+      /* Fields */
+      .field {
+        margin-bottom: 16px;
+      }
+
+      .field label {
+        font-size: 13px;
+        color: var(--text);
+        margin-bottom: 6px;
+        display: block;
+      }
+
+      .field-inner {
+        position: relative;
+      }
+
+      .field input {
+        width: 100%;
+        height: 44px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        padding: 0 12px;
+        font-size: 14px;
+        transition: all 0.2s;
+      }
+
+      .field input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        outline: none;
+      }
+
+      /* Eye button */
+      .eye {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      /* Meta */
+      .meta-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 13px;
+      }
+
+      .meta-row a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .meta-row a:hover {
+        text-decoration: underline;
+      }
+
+      /* Button */
+      .submit-btn {
+        width: 100%;
+        height: 46px;
+        border-radius: 10px;
+        background: var(--primary);
+        color: white;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .submit-btn:hover {
+        background: #1d4ed8;
+      }
+
+      /* Footer */
+      .form-foot {
+        text-align: center;
+        font-size: 13px;
+        margin-top: 18px;
+        color: var(--muted);
+      }
+
+      .form-foot a {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .form-foot a:hover {
+        text-decoration: underline;
+      }
+
+      /* Toast */
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--secondary);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-size: 13px;
+        opacity: 0;
+        transition: 0.3s;
+      }
+
+      .toast.show {
+        opacity: 1;
+      }
