@@ -1,4 +1,4 @@
-package controller;
+package controller.auth;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -54,31 +54,31 @@ public class RegisterServlet extends HttpServlet {
             String sql = "INSERT INTO users (first_name, last_name, dob, gender, email, phone, address, country, username, password, referral_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             String newsql = "INSERT INTO customer (customer_username, customer_phoneNo, customer_email, customer_dob, customer_address, customer_country) VALUES (?, ?, ?, ?, ?, ?)";
 
-            PreparedStatement ps = con.prepareStatement(sql);
-            PreparedStatement pps = con.prepareStatement(newsql);
+            PreparedStatement statement = con.prepareStatement(sql);
+            PreparedStatement customerStatement = con.prepareStatement(newsql);
 
-            ps.setString(1, firstName);
-            ps.setString(2, lastName);
-            ps.setString(3, dob);
-            ps.setString(4, gender);
-            ps.setString(5, email);
-            ps.setString(6, customer_phoneNo);
-            ps.setString(7, address);
-            ps.setString(8, country);
-            ps.setString(9, username);
-            ps.setString(10, hashedPassword);
-            ps.setString(11, referral);
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            statement.setString(3, dob);
+            statement.setString(4, gender);
+            statement.setString(5, email);
+            statement.setString(6, customer_phoneNo);
+            statement.setString(7, address);
+            statement.setString(8, country);
+            statement.setString(9, username);
+            statement.setString(10, hashedPassword);
+            statement.setString(11, referral);
 
-            ps.executeUpdate();
+            statement.executeUpdate();
 
-            pps.setString(1, customer_username);
-            pps.setString(2, customer_phoneNo);
-            pps.setString(3, customer_email);
-            pps.setString(4, customer_dob);
-            pps.setString(5, customer_address);
-            pps.setString(6, customer_country);
+            customerStatement.setString(1, customer_username);
+            customerStatement.setString(2, customer_phoneNo);
+            customerStatement.setString(3, customer_email);
+            customerStatement.setString(4, customer_dob);
+            customerStatement.setString(5, customer_address);
+            customerStatement.setString(6, customer_country);
 
-            pps.executeUpdate();
+            customerStatement.executeUpdate();
 
             // Redirect after success
             response.sendRedirect("login");

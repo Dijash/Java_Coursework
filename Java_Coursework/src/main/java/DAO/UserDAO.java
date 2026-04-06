@@ -30,11 +30,11 @@ public class UserDAO {
                 if (PasswordUtil.checkPassword(password, storedPassword)) {
                     result = "success";
                 } else {
-                    result = "wrong_password";   // ❌ Wrong password
+                    result = "wrong_password";
                 }
 
             } else {
-                result = "user_not_found";      // ❌ No user
+                result = "user_not_found";
             }
 
         } catch (Exception e) {

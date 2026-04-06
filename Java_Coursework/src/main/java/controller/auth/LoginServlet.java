@@ -1,4 +1,4 @@
-package controller;
+package controller.auth;
 
 import DAO.UserDAO;
 import jakarta.servlet.ServletException;
