@@ -9,37 +9,38 @@ import util.PasswordUtil;
 
 public class UserDAO {
 
-    public boolean checkLogin(String email, String password) {
+    public String checkLogin(String email, String password) {
 
-        boolean isValid = false;
+        String result = "error";
 
         try {
 
             Connection con = DBConnection.getConnection();
 
             String sql = "SELECT * FROM users WHERE email = ?";
-
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
+
                 String storedPassword = rs.getString("password");
-                System.out.println("Stored password: " + storedPassword);
-                System.out.println("Entered password: " + password);
 
                 if (PasswordUtil.checkPassword(password, storedPassword)) {
-                    isValid = true;
+                    result = "success";
+                } else {
+                    result = "wrong_password";   // ❌ Wrong password
                 }
+
             } else {
-                System.out.println("No user found with email: " + email);
+                result = "user_not_found";      // ❌ No user
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return isValid;
+        return result;
     }
 }

@@ -4,6 +4,7 @@ import DAO.UserDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+
 import java.io.IOException;
 
 @WebServlet("/login")
@@ -22,19 +23,23 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         UserDAO dao = new UserDAO();
+        String result = dao.checkLogin(email, password);
 
-        boolean isValid = dao.checkLogin(email, password);
+        if (result.equals("success")) {
 
-        if (isValid) {
             HttpSession session = request.getSession();
             session.setAttribute("email", email);
 
-            System.out.println("Login success! Redirecting to home for user: " + email);
-
             response.sendRedirect(request.getContextPath() + "/home");
-        } else {
 
-            request.setAttribute("error", "Invalid email or password");
+        } else if (result.equals("wrong_password")) {
+
+            request.setAttribute("error", "Wrong password!");
+            request.getRequestDispatcher("/Pages/Auth/Login.jsp").forward(request, response);
+
+        } else if (result.equals("user_not_found")) {
+
+            request.setAttribute("error", "User does not exist. Please register.");
             request.getRequestDispatcher("/Pages/Auth/Login.jsp").forward(request, response);
         }
     }
