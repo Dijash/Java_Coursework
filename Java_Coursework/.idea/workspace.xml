@@ -101,6 +101,9 @@
       <option name="catalinaBase" value="" />
       <option name="contextPath" value="/Java_Coursework" />
       <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="envOptions">
+        <map />
+      </option>
       <option name="extraClassPath" value="" />
       <option name="tomcatInfo">
         <TomcatInfo>

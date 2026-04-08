@@ -7,7 +7,7 @@
       body {
         margin: 0;
         padding: 0;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: Poppins, sans-serif;
         background-color: #f5f6fa;
         color: #2f3640;
         display: flex;
