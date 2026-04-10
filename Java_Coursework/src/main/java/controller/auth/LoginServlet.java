@@ -22,23 +22,31 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
+        HttpSession session = request.getSession();
+        session.setMaxInactiveInterval(30 * 60);
+
+        if ("admin@gmail.com".equals(email) && "admin".equals(password)) {
+            session.setAttribute("email", email);
+            session.setAttribute("role", "admin");
+
+            response.sendRedirect(request.getContextPath() + "/admin");
+            return;
+        }
+
         UserDAO dao = new UserDAO();
         String result = dao.checkLogin(email, password);
 
         if (result.equals("success")) {
-
-            HttpSession session = request.getSession();
             session.setAttribute("email", email);
+            session.setAttribute("role", "customer");
 
             response.sendRedirect(request.getContextPath() + "/home");
 
         } else if (result.equals("wrong_password")) {
-
             request.setAttribute("error", "Wrong password!");
             request.getRequestDispatcher("/Pages/Auth/Login.jsp").forward(request, response);
 
         } else if (result.equals("user_not_found")) {
-
             request.setAttribute("error", "User does not exist. Please register.");
             request.getRequestDispatcher("/Pages/Auth/Login.jsp").forward(request, response);
         }

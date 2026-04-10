@@ -37,13 +37,6 @@ public class RegisterServlet extends HttpServlet {
             String password = request.getParameter("password");
             String referral = request.getParameter("referral");
 
-            String customer_username = request.getParameter("username");
-            String customer_phoneNo = request.getParameter("phone");
-            String customer_email = request.getParameter("email");
-            String customer_dob = request.getParameter("dob");
-            String customer_address = request.getParameter("address");
-            String customer_country = request.getParameter("country");
-
 
             // Hash password
             String hashedPassword = PasswordUtil.getHashPassword(password);
@@ -51,34 +44,23 @@ public class RegisterServlet extends HttpServlet {
             // Insert into DB
             Connection con = DBConnection.getConnection();
 
-            String sql = "INSERT INTO users (first_name, last_name, dob, gender, email, phone, address, country, username, password, referral_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            String newsql = "INSERT INTO customer (customer_username, customer_phoneNo, customer_email, customer_dob, customer_address, customer_country) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO customer (first_name, last_name, gender, password, referral_code, customer_username, customer_phoneNo,  customer_email, customer_dob, customer_address, customer_country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement statement = con.prepareStatement(sql);
-            PreparedStatement customerStatement = con.prepareStatement(newsql);
 
             statement.setString(1, firstName);
             statement.setString(2, lastName);
-            statement.setString(3, dob);
-            statement.setString(4, gender);
-            statement.setString(5, email);
-            statement.setString(6, customer_phoneNo);
-            statement.setString(7, address);
-            statement.setString(8, country);
-            statement.setString(9, username);
-            statement.setString(10, hashedPassword);
-            statement.setString(11, referral);
+            statement.setString(3, gender);
+            statement.setString(4, hashedPassword);
+            statement.setString(5, referral);
+            statement.setString(6, username);
+            statement.setString(7, phone);
+            statement.setString(8, email);
+            statement.setString(9, dob);
+            statement.setString(10, address);
+            statement.setString(11, country);
 
             statement.executeUpdate();
-
-            customerStatement.setString(1, customer_username);
-            customerStatement.setString(2, customer_phoneNo);
-            customerStatement.setString(3, customer_email);
-            customerStatement.setString(4, customer_dob);
-            customerStatement.setString(5, customer_address);
-            customerStatement.setString(6, customer_country);
-
-            customerStatement.executeUpdate();
 
             // Redirect after success
             response.sendRedirect("login");

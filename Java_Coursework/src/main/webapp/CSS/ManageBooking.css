@@ -1,0 +1,181 @@
+:root {
+        --primary: #0f1011;
+        --primary-hover: #273f4b;
+        --accent: #c0392b;
+        --accent-hover: #e74c3c;
+        --bg-light: #f4f7f9;
+        --text-dark: #2c3e50;
+        --text-muted: #7f8c8d;
+        --white: #ffffff;
+        --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        --radius: 16px;
+        --gap: 24px;
+        --sidebar-width: 260px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+        background: var(--bg-light);
+        color: var(--text-dark);
+        display: flex;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .sidebar {
+        width: var(--sidebar-width);
+        background: var(--primary);
+        color: white;
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        height: 100vh;
+        z-index: 1000;
+      }
+      .sidebar h2 {
+        font-size: 1.6rem;
+        margin-bottom: 2.5rem;
+        text-align: center;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+      .sidebar h2 span {
+        color: #3498db;
+      }
+      .sidebar nav {
+        flex: 1;
+      }
+      .sidebar ul {
+        list-style: none;
+      }
+      .sidebar a {
+        text-decoration: none;
+        color: #ffffff;
+        padding: 14px 18px;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        border-radius: 12px;
+        font-size: 0.95rem;
+        transition: all 0.2s ease;
+      }
+      .sidebar a:hover,
+      .sidebar a.active {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+      }
+      .sidebar a.active {
+        background: var(--primary-hover);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+      .logout {
+        background: var(--accent) !important;
+        justify-content: center;
+        font-weight: 600;
+        margin-top: auto;
+      }
+
+      main {
+        flex: 1;
+        margin-left: var(--sidebar-width);
+        padding: 40px;
+        max-width: 100%;
+      }
+      .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: 0.2s;
+        border: none;
+        cursor: pointer;
+      }
+      .btn-primary:hover {
+        background: var(--primary-hover);
+      }
+
+      .content-box {
+        background: var(--white);
+        padding: 28px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+      .table-responsive {
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 800px;
+      }
+      table th {
+        background: #f8fafc;
+        color: var(--text-muted);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 11px;
+        padding: 16px;
+        text-align: left;
+      }
+      table td {
+        padding: 18px 16px;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 14px;
+      }
+      table tr:hover td {
+        background: #fdfdfd;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 8px;
+      }
+      .action-btn-view,
+      .action-btn-edit,
+      .action-btn-delete {
+        background: transparent;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: 0.2s;
+        border: 1px solid;
+      }
+      .action-btn-view {
+        color: #3498db;
+        border-color: #3498db;
+      }
+      .action-btn-view:hover {
+        background: #3498db;
+        color: white;
+      }
+      .action-btn-edit {
+        color: #f39c12;
+        border-color: #f39c12;
+      }
+      .action-btn-edit:hover {
+        background: #f39c12;
+        color: white;
+      }
+      .action-btn-delete {
+        color: #e74c3c;
+        border-color: #e74c3c;
+      }
+      .action-btn-delete:hover {
+        background: #e74c3c;
+        color: white;
+      }

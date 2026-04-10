@@ -17,11 +17,11 @@ public class UserDAO {
 
             Connection con = DBConnection.getConnection();
 
-            String sql = "SELECT * FROM users WHERE email = ?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, email);
+            String sql = "SELECT * FROM customer WHERE customer_email = ?";
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, email);
 
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
 

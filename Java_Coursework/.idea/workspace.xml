@@ -5,14 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95bb078c-d2b8-465c-8706-f9d1225f6fff" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/CookieUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/SessionUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/CSS/AdminStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/CSS/ManageBooking.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/addVehicle.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/customer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/manageBooking.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/notifications.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/reports.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/reviews.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/settings.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/AdminDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/VehicleDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/VehicleDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/admin/AdminServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/admin/AdminServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/admin/VehicleServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/admin/VehicleServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/auth/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/auth/LoginServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/auth/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/auth/LogoutServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/auth/RegisterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/auth/RegisterServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filter/AuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/CSS/RegisterStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/CSS/RegisterStyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/admin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/Root/Home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Root/Home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/manageVehicles.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/manageVehicles.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
