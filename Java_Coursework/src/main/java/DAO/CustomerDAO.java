@@ -59,6 +59,7 @@ public class CustomerDAO {
                 rs.getString("customer_license"),
                 rs.getString("customer_username"),
                 rs.getString("referral_code"),
+                rs.getString("password"),
                 rs.getTimestamp("created_at")
         );
     }

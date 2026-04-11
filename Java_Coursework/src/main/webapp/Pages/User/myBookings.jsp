@@ -1,23 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
-<%@ taglib prefix="sql" uri="jakarta.tags.sql" %>
-
-<%-- Database Connection --%>
-<sql:setDataSource var="dbConnection" driver="com.mysql.cj.jdbc.Driver"
-                   url="jdbc:mysql://localhost:3306/java_coursework"
-                   user="root" password=""/>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="jakarta.tags.core" %> <%@
+taglib prefix="fmt" uri="jakarta.tags.fmt" %> <%@ taglib prefix="sql"
+uri="jakarta.tags.sql" %> <%-- Database Connection --%>
+<sql:setDataSource
+  var="dbConnection"
+  driver="com.mysql.cj.jdbc.Driver"
+  url="jdbc:mysql://localhost:3306/java_coursework"
+  user="root"
+  password=""
+/>
 
 <%-- Fetch Total Notification Count --%>
 <sql:query var="totalNotification" dataSource="${dbConnection}">
-     SELECT COUNT(*) as count FROM notification;
+  SELECT COUNT(*) as count FROM notification;
 </sql:query>
 
 <%-- Fetch Recent Notifications for Dropdown --%>
 <sql:query var="recentNotifications" dataSource="${dbConnection}">
-     SELECT notification_type, notification_description, notification_date
-     FROM notification
-     ORDER BY notification_date DESC LIMIT 5;
+  SELECT notification_type, notification_description, notification_date FROM
+  notification ORDER BY notification_date DESC LIMIT 5;
 </sql:query>
 
 <!doctype html>
@@ -25,8 +26,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RentAll | User Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <title>RentAll | My Bookings</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --primary: #0f172a;
@@ -73,7 +77,6 @@
         position: fixed;
         height: 100vh;
       }
-
       .sidebar h2 {
         font-size: 1.5rem;
         font-weight: 700;
@@ -105,7 +108,6 @@
         color: white !important;
         display: flex;
         justify-content: center;
-        align-items: center;
         padding: 0.8rem 1rem;
         border-radius: var(--radius-md);
         text-decoration: none;
@@ -149,7 +151,6 @@
         gap: 1.25rem;
       }
 
-      /* Home Button */
       .btn-home {
         text-decoration: none;
         background: transparent;
@@ -167,11 +168,10 @@
         box-shadow: var(--shadow);
       }
 
-      /* Notification Button & Dropdown */
+      /* Notification Dropdown */
       .dropdown-wrapper {
         position: relative;
       }
-
       .btn-notif {
         background: var(--card-bg);
         border: 1px solid var(--border);
@@ -189,7 +189,6 @@
       .btn-notif:hover {
         border-color: var(--accent);
       }
-
       .notif-badge {
         background: var(--danger);
         color: white;
@@ -212,11 +211,9 @@
         z-index: 100;
         overflow: hidden;
       }
-
       .notif-dropdown.show {
         display: flex;
       }
-
       .notif-header {
         padding: 1rem;
         border-bottom: 1px solid var(--border);
@@ -225,12 +222,10 @@
         font-size: 0.9rem;
         color: var(--primary);
       }
-
       .notif-list {
         max-height: 320px;
         overflow-y: auto;
       }
-
       .notif-item {
         padding: 1rem;
         border-bottom: 1px solid var(--border);
@@ -274,30 +269,6 @@
       .dashboard-content {
         padding: 2.5rem;
       }
-      .stats-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1.5rem;
-        margin-bottom: 2.5rem;
-      }
-      .stat-card {
-        background: var(--card-bg);
-        padding: 1.5rem;
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow);
-        border: 1px solid var(--border);
-      }
-      .stat-card h3 {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        margin-bottom: 0.5rem;
-      }
-      .stat-card .value {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: var(--primary);
-      }
 
       /* Table */
       .content-box {
@@ -308,54 +279,73 @@
         border: 1px solid var(--border);
       }
       .content-box h3 {
-        font-size: 1.1rem;
-        margin-bottom: 1.25rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        color: var(--primary);
       }
-      .view-all-link {
-        font-size: 0.85rem;
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 500;
-      }
+
       table {
         width: 100%;
         border-collapse: collapse;
       }
       th {
         text-align: left;
-        padding: 0.75rem 1rem;
+        padding: 1rem;
         font-size: 0.75rem;
         color: var(--text-muted);
         text-transform: uppercase;
         border-bottom: 2px solid var(--bg-main);
       }
       td {
-        padding: 1rem;
+        padding: 1.25rem 1rem;
         font-size: 0.9rem;
         border-bottom: 1px solid var(--bg-main);
       }
 
+      /* Immersive Status */
       .status-container {
         display: inline-flex;
         align-items: center;
-        gap: 6px;
+        gap: 8px;
         font-weight: 600;
         font-size: 0.85rem;
       }
-
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
 
       .btn-action {
         text-decoration: none;
         background: var(--bg-main);
         color: var(--primary);
-        padding: 6px 12px;
+        padding: 8px 16px;
         border-radius: var(--radius-md);
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         font-weight: 600;
         border: 1px solid var(--border);
+        transition: 0.2s;
+      }
+      .btn-action:hover {
+        background: var(--primary);
+        color: white;
+      }
+
+      /* Empty State */
+      .empty-state {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: var(--text-muted);
+      }
+      .empty-state h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary);
+      }
+      .empty-state p {
+        font-size: 0.9rem;
       }
     </style>
   </head>
@@ -364,9 +354,20 @@
       <h2>RentAll</h2>
       <nav>
         <ul>
-          <li><a href="<%= request.getContextPath() %>/userDashboard" class="active">Dashboard</a></li>
-          <li><a href="<%= request.getContextPath() %>/myBookings">My Bookings</a></li>
-          <li><a href="<%= request.getContextPath() %>/settings">Settings</a></li>
+          <li>
+            <a href="<%= request.getContextPath() %>/userDashboard"
+              >Dashboard</a
+            >
+          </li>
+          <%-- Set My Bookings to active --%>
+          <li>
+            <a href="<%= request.getContextPath() %>/myBookings" class="active"
+              >My Bookings</a
+            >
+          </li>
+          <li>
+            <a href="<%= request.getContextPath() %>/settings">Settings</a>
+          </li>
         </ul>
       </nav>
       <a href="<%= request.getContextPath() %>/logout" class="logout">Logout</a>
@@ -375,36 +376,41 @@
     <main>
       <header class="top-navbar">
         <div class="welcome-text">
-          <h1>
-            Hello, <c:out value="${sessionScope.user.customer_username}" default="Driver" />
-          </h1>
-          <p>Ready for your next journey?</p>
+          <h1>Booking History</h1>
+          <p>Review all your past and active reservations.</p>
         </div>
 
         <div class="user-actions">
-          <a href="<%= request.getContextPath() %>/home" class="btn-home">Return to Home</a>
+          <a href="<%= request.getContextPath() %>/home" class="btn-home"
+            >Return to Home</a
+          >
 
           <div class="dropdown-wrapper">
             <button class="btn-notif" id="notifBtn">
               System Alerts
-              <span class="notif-badge"><c:out value="${totalNotification.rows[0].count}" default="0" /></span>
+              <span class="notif-badge"
+                ><c:out value="${totalNotification.rows[0].count}" default="0"
+              /></span>
             </button>
-
             <div class="notif-dropdown" id="notifMenu">
-              <div class="notif-header">
-                Recent Broadcasts
-              </div>
+              <div class="notif-header">Recent Broadcasts</div>
               <div class="notif-list">
                 <c:forEach var="notif" items="${recentNotifications.rows}">
                   <div class="notif-item">
-                    <strong><c:out value="${notif.notification_type}"/></strong>
-                    <p><c:out value="${notif.notification_description}"/></p>
-                    <small>Date: <c:out value="${notif.notification_date}"/></small>
+                    <strong
+                      ><c:out value="${notif.notification_type}"
+                    /></strong>
+                    <p><c:out value="${notif.notification_description}" /></p>
+                    <small
+                      >Date: <c:out value="${notif.notification_date}"
+                    /></small>
                   </div>
                 </c:forEach>
-
                 <c:if test="${empty recentNotifications.rows}">
-                  <div class="notif-item" style="text-align: center; color: var(--text-muted);">
+                  <div
+                    class="notif-item"
+                    style="text-align: center; color: var(--text-muted)"
+                  >
                     No active system alerts.
                   </div>
                 </c:if>
@@ -413,43 +419,24 @@
           </div>
 
           <div class="user-profile">
-            <span><c:out value="${sessionScope.user.customer_username}" default="Profile" /></span>
+            <span
+              ><c:out
+                value="${sessionScope.user.customer_username}"
+                default="Profile"
+            /></span>
           </div>
         </div>
       </header>
 
       <div class="dashboard-content">
-        <section class="stats-container">
-          <div class="stat-card">
-            <h3>Active Bookings</h3>
-            <div class="value" style="color: var(--accent)">
-              <c:out value="${activeBookingsCount}" default="0" />
-            </div>
-          </div>
-          <div class="stat-card">
-            <h3>Completed Trips</h3>
-            <div class="value">
-              <c:out value="${completedTripsCount}" default="0" />
-            </div>
-          </div>
-          <div class="stat-card">
-            <h3>Total Spent</h3>
-            <div class="value" style="color: var(--success)">
-              ₹ <c:out value="${totalSpent}" default="0.00" />
-            </div>
-          </div>
-        </section>
-
         <section class="content-box">
-          <h3>
-            Recent Bookings
-            <a href="<%= request.getContextPath() %>/myBookings" class="view-all-link">View All</a>
-          </h3>
+          <h3>All Reservations</h3>
           <div class="table-responsive">
             <table>
               <thead>
                 <tr>
-                  <th>Vehicle</th>
+                  <th>Vehicle Model</th>
+                  <th>License Plate</th>
                   <th>Rental Period</th>
                   <th>Total Fare</th>
                   <th>Status</th>
@@ -457,64 +444,99 @@
                 </tr>
               </thead>
               <tbody>
-                <c:forEach var="booking" items="${userRecentBookings}">
+                <c:forEach var="booking" items="${userAllBookings}">
                   <tr>
                     <td>
-                      <span style="font-weight: 600"><c:out value="${booking.vehicleDetails}" /></span>
+                      <span style="font-weight: 600; color: var(--primary)"
+                        ><c:out value="${booking.vehicleDetails}"
+                      /></span>
                     </td>
-                    <td style="color: var(--text-muted)">
-                      <c:out value="${booking.startDate}" /> - <c:out value="${booking.endDate}" />
+                    <td
+                      style="color: var(--text-muted); font-family: monospace"
+                    >
+                      <c:out value="${booking.numberPlate}" default="N/A" />
                     </td>
-                    <td style="font-weight: 500">
+                    <td style="color: var(--text-main)">
+                      <c:out value="${booking.startDate}" /> &nbsp;&rarr;&nbsp;
+                      <c:out value="${booking.endDate}" />
+                    </td>
+                    <td style="font-weight: 600">
                       ₹ <c:out value="${booking.totalPrice}" />
                     </td>
                     <td>
-                      <div class="status-container"
-                           style="color: ${booking.status == 'On Track' ? '#10b981' : (booking.status == 'Completed' ? '#64748b' : '#f59e0b')};">
-                        <span class=""
-                              style="background-color: ${booking.status == 'On Track' ? '#10b981' : (booking.status == 'Completed' ? '#64748b' : '#f59e0b')};
-                                     box-shadow: 0 0 8px ${booking.status == 'On Track' ? 'rgba(16,185,129,0.4)' : (booking.status == 'Completed' ? 'rgba(100,116,139,0.3)' : 'rgba(245,158,11,0.4)')};">
+                      <div
+                        class="status-container"
+                        style="
+                          color: $ {
+                            booking.status== 'On Track' ? '#10b981' : (
+                              booking.status == &quot;Completed&quot; ?
+                                &quot;#64748b&quot;: &quot;#f59e0b&quot;
+                            );
+                          }
+                        "
+                      >
+                        <span
+                          class=""
+                          style="
+                            background-color: $ {
+                              booking.status== 'On Track' ? '#10b981' : (
+                                booking.status == &quot;Completed&quot; ?
+                                  &quot;#64748b&quot;: &quot;#f59e0b&quot;
+                              );
+                            }
+                            box-shadow: 0 0 8px $ {
+                              booking.status== 'On Track' ? 'rgba(16,185,129,0.4)' : (
+                                booking.status == &quot;Completed&quot; ?
+                                  &quot;rgba(100,116,139,0.3)&quot;:
+                                  &quot;rgba(245,158,11,0.4)&quot;
+                              );
+                            }
+                          "
+                        >
                         </span>
                         <c:out value="${booking.status}" />
                       </div>
                     </td>
                     <td>
-                      <a href="<%= request.getContextPath() %>/viewUserBooking?id=${booking.bookingId}" class="btn-action">Details</a>
+                      <a
+                        href="<%= request.getContextPath() %>/viewUserBooking?id=${booking.bookingId}"
+                        class="btn-action"
+                        >Details</a
+                      >
                     </td>
                   </tr>
                 </c:forEach>
-
-                <c:if test="${empty userRecentBookings}">
-                  <tr>
-                    <td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">
-                      You have no recent bookings recorded.
-                    </td>
-                  </tr>
-                </c:if>
               </tbody>
             </table>
+
+            <c:if test="${empty userAllBookings}">
+              <div class="empty-state">
+                <h4>No bookings found</h4>
+                <p>You haven't rented any vehicles with us yet.</p>
+              </div>
+            </c:if>
           </div>
         </section>
       </div>
     </main>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
+      document.addEventListener("DOMContentLoaded", function () {
         const notifBtn = document.getElementById("notifBtn");
         const notifMenu = document.getElementById("notifMenu");
 
-        notifBtn.addEventListener("click", function(event) {
+        notifBtn.addEventListener("click", function (event) {
           event.stopPropagation();
           notifMenu.classList.toggle("show");
         });
 
-        window.addEventListener("click", function() {
+        window.addEventListener("click", function () {
           if (notifMenu.classList.contains("show")) {
             notifMenu.classList.remove("show");
           }
         });
 
-        notifMenu.addEventListener("click", function(event) {
+        notifMenu.addEventListener("click", function (event) {
           event.stopPropagation();
         });
       });

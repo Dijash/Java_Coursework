@@ -1,6 +1,7 @@
 package controller.auth;
 
 import DAO.UserDAO;
+import model.Customer; // Make sure this import is here!
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -25,6 +26,7 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setMaxInactiveInterval(30 * 60);
 
+        // Admin Login
         if ("admin@gmail.com".equals(email) && "admin".equals(password)) {
             session.setAttribute("email", email);
             session.setAttribute("role", "admin");
@@ -33,14 +35,20 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
+        // Customer Login
         UserDAO dao = new UserDAO();
         String result = dao.checkLogin(email, password);
 
         if (result.equals("success")) {
+            // THE FIX: Fetch the customer object and save it to the session
+            Customer loggedInCustomer = dao.getCustomerByEmail(email);
+
+            session.setAttribute("user", loggedInCustomer); // UserServlet needs this!
             session.setAttribute("email", email);
             session.setAttribute("role", "customer");
 
-            response.sendRedirect(request.getContextPath() + "/home");
+            // Redirect directly to the dashboard after login
+            response.sendRedirect(request.getContextPath() + "/userDashboard");
 
         } else if (result.equals("wrong_password")) {
             request.setAttribute("error", "Wrong password!");

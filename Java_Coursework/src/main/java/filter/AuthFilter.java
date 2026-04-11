@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-// Protect all these admin routes
 @WebFilter({
         "/admin",
         "/manageBooking", "/viewBooking", "/editBooking", "/updateBooking", "/deleteBooking",

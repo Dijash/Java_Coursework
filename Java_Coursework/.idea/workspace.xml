@@ -5,38 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95bb078c-d2b8-465c-8706-f9d1225f6fff" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/CustomerDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/NotificationDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/ReviewDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/admin/deleteVehicleServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/admin/updateVehicleServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Review.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/editVehicle.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/viewBooking.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/viewCustomer.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/viewVehicle.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDashboardDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/user/UpdateProfileServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/user/UserServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/User/bookingDetails.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/User/myBookings.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/User/settings.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/AdminDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/BookingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/BookingDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/VehicleDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/VehicleDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/admin/AdminServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/admin/AdminServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/admin/VehicleServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/admin/VehicleServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/CustomerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/auth/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/auth/LoginServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filter/AuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Vehicle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/CSS/AdminStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/CSS/AdminStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/CSS/ManageBooking.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/CSS/ManageBooking.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/addVehicle.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/addVehicle.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/admin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/customer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/customer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/manageBooking.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/manageBooking.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/manageVehicles.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/manageVehicles.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/notifications.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/notifications.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/reviews.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/reviews.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/settings.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/editBooking.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/User/dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/User/dashboard.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,22 +64,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Smart Tomcat.Tomcat: Java_Coursework.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/senpai/Documents/Java Cousework Sem-2/Java_Coursework/Java_Coursework",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Smart Tomcat.Tomcat: Java_Coursework.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/senpai/Documents/Java Cousework Sem-2/Java_Coursework/Java_Coursework&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Tomcat: Java_Coursework" type="com.poratu.idea.plugins.tomcat">
       <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
