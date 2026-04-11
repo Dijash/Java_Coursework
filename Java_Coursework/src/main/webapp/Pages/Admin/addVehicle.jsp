@@ -24,7 +24,7 @@
         box-sizing: border-box;
       }
       body {
-        font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+        font-family: "Poppins", sans-serif;
         background: var(--bg-light);
         color: var(--text-dark);
         display: flex;
@@ -154,11 +154,7 @@
       }
       select.form-control {
         cursor: pointer;
-        appearance: none;
-        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237f8c8d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-        background-repeat: no-repeat;
-        background-position: right 1rem center;
-        background-size: 1em;
+
       }
 
       .btn-primary {
@@ -205,7 +201,7 @@
           <li><a href="<%= request.getContextPath() %>/manageReviews"><span>Reviews</span></a></li>
           <li><a href="<%= request.getContextPath() %>/manageNotification"><span>Notifications</span></a></li>
           <li><a href="<%= request.getContextPath() %>/report"><span>Reports</span></a></li>
-          <li><a href="<%= request.getContextPath() %>/settings"><span>Settings</span></a></li>
+
         </ul>
       </nav>
       <a href="<%= request.getContextPath() %>/logout" class="logout"><span>Logout</span></a>
@@ -218,7 +214,7 @@
       </div>
 
       <div class="content-box">
-        <form action="<%= request.getContextPath() %>/addVehicleData" method="POST">
+        <form action="<%= request.getContextPath() %>/addVehicleData" method="POST" enctype="multipart/form-data">
 
           <div class="form-grid">
             <div class="form-group">
@@ -265,6 +261,12 @@
                 <option value="Available">Available</option>
                 <option value="Maintenance">Maintenance</option>
               </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="vehicle_image">Vehicle Photo</label>
+              <input type="file" id="vehicle_image" name="vehicle_image" class="form-control" accept="image/png, image/jpeg, image/jpg" style="padding: 10px 16px; cursor: pointer;">
+              <small style="color: var(--text-muted); display: block; margin-top: 6px;">Accepted formats: JPG, PNG. Max size: 10MB. (Optional: defaults to standard image if left blank).</small>
             </div>
           </div>
 

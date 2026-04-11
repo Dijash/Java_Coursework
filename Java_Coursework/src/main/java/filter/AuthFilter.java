@@ -16,19 +16,18 @@ import java.io.IOException;
 // Protect all these admin routes
 @WebFilter({
         "/admin",
-        "/manageBooking",
-        "/manageVehicles",
-        "/manageCustomers",
-        "/manageReviews",
-        "/manageNotification",
-        "/report",
-        "/settings"
+        "/manageBooking", "/viewBooking", "/editBooking", "/updateBooking", "/deleteBooking",
+        "/manageVehicles", "/addVehicle", "/viewVehicle", "/editVehicle",
+        "/manageCustomers", "/viewCustomer", "/deleteCustomer",
+        "/manageReviews", "/deleteReview",
+        "/manageNotification", "/sendNotification",
+        "/report"
 })
 public class AuthFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        // Initialization code (usually empty)
+
     }
 
     @Override

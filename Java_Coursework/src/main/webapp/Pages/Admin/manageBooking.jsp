@@ -1,31 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ taglib prefix="sql" uri="jakarta.tags.sql" %>
-
-<sql:setDataSource var="dbConnection" driver="com.mysql.cj.jdbc.Driver"
-                   url="jdbc:mysql://localhost:3306/java_coursework"
-                   user="root" password=""/>
-
-<sql:query var="allBookings" dataSource="${dbConnection}">
-    SELECT
-        b.booking_id,
-        c.first_name,
-        c.last_name,
-        v.vehicle_brand,
-        v.vehicle_type,
-        v.vehicle_numberPlate,
-        b.booking_startDate,
-        b.booking_endDate,
-        b.booking_status
-    FROM
-        booking b
-    JOIN
-        customer c ON b.customer_id = c.customer_id
-    JOIN
-        vehicle v ON b.vehicle_id = v.vehicle_id
-    ORDER BY
-        b.booking_id DESC;
-</sql:query>
 
 <!doctype html>
 <html lang="en">
@@ -33,7 +7,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RentAll | Bookings</title>
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/CSS/ManageBooking.css">
+    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/CSS/AdminStyle.css">
+    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/CSS/ManageBooking.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            background-color: #f4f7f9;
+        }
+        main {
+            flex: 1;
+            margin-left: 260px;
+            padding: 40px;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .action-btn {
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .action-btn:active { transform: scale(0.95); }
+        .action-btn-view { background: #e1f0fa; color: #2980b9; }
+        .action-btn-view:hover { background: #3498db; color: white; }
+        .action-btn-edit { background: #fef9e7; color: #f39c12; }
+        .action-btn-edit:hover { background: #f1c40f; color: white; }
+        .action-btn-delete { background: #fceceb; color: #c0392b; }
+        .action-btn-delete:hover { background: #e74c3c; color: white; }
+    </style>
   </head>
   <body>
     <aside class="sidebar">
@@ -47,7 +61,7 @@
           <li><a href="<%= request.getContextPath() %>/manageReviews"><span>Reviews</span></a></li>
           <li><a href="<%= request.getContextPath() %>/manageNotification"><span>Notifications</span></a></li>
           <li><a href="<%= request.getContextPath() %>/report"><span>Reports</span></a></li>
-          <li><a href="<%= request.getContextPath() %>/settings"><span>Settings</span></a></li>
+
         </ul>
       </nav>
       <a href="<%= request.getContextPath() %>/logout" class="logout"><span>Logout</span></a>
@@ -56,7 +70,6 @@
     <main>
       <div class="page-header">
         <h2>All Bookings</h2>
-
       </div>
 
       <div class="content-box">
@@ -74,33 +87,39 @@
               </tr>
             </thead>
             <tbody>
-              <c:forEach var="row" items="${allBookings.rows}">
+              <c:forEach var="booking" items="${bookings}">
                 <tr>
-                  <td><strong><c:out value="${row.booking_id}" /></strong></td>
-                  <td><c:out value="${row.first_name} ${row.last_name}" /></td>
-                  <td><c:out value="${row.vehicle_brand} ${row.vehicle_type}" /></td>
-                  <td><c:out value="${row.vehicle_numberPlate}" /></td>
-                  <td><c:out value="${row.booking_startDate} to ${row.booking_endDate}" /></td>
+                  <td><strong>#<c:out value="${booking.bookingId}" /></strong></td>
+                  <td><c:out value="${booking.customerName}" /></td>
+                  <td><c:out value="${booking.vehicleDetails}" /></td>
+                  <td><c:out value="${booking.numberPlate}" /></td>
+                  <td><c:out value="${booking.startDate} to ${booking.endDate}" /></td>
 
                   <td style="font-weight: 600; color:
                       <c:choose>
-                          <c:when test="${row.booking_status == 'Active' || row.booking_status == 'On Track'}">#3498db</c:when>
-                          <c:when test="${row.booking_status == 'Completed'}">#27ae60</c:when>
-                          <c:when test="${row.booking_status == 'Extended'}">#f39c12</c:when>
+                          <c:when test="${booking.status == 'Active' || booking.status == 'On Track'}">#3498db</c:when>
+                          <c:when test="${booking.status == 'Completed'}">#27ae60</c:when>
                           <c:otherwise>#e74c3c</c:otherwise>
                       </c:choose>;">
-                      <c:out value="${row.booking_status}" />
+                      <c:out value="${booking.status}" />
                   </td>
 
-                  <td class="action-buttons">
-                    <button class="action-btn-view">View</button>
-                    <button class="action-btn-edit">Edit</button>
-                    <button class="action-btn-delete">Delete</button>
+                  <td>
+                    <div class="action-buttons">
+                        <a href="<%= request.getContextPath() %>/viewBooking?id=${booking.bookingId}" class="action-btn action-btn-view">View</a>
+
+                        <a href="<%= request.getContextPath() %>/editBooking?id=${booking.bookingId}" class="action-btn action-btn-edit">Edit</a>
+
+                        <form action="<%= request.getContextPath() %>/deleteBooking" method="POST" style="display: contents;">
+                            <input type="hidden" name="booking_id" value="${booking.bookingId}">
+                            <button type="submit" class="action-btn action-btn-delete" onclick="return confirm('Are you sure you want to delete this booking?');">Delete</button>
+                        </form>
+                    </div>
                   </td>
                 </tr>
               </c:forEach>
 
-              <c:if test="${empty allBookings.rows}">
+              <c:if test="${empty bookings}">
                  <tr>
                     <td colspan="7" style="text-align: center; color: #7f8c8d; padding: 30px;">No bookings found.</td>
                  </tr>

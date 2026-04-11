@@ -6,25 +6,7 @@
                    url="jdbc:mysql://localhost:3306/java_coursework"
                    user="root" password=""/>
 
-<sql:query var="upcomingReturns" dataSource="${dbConnection}">
-    SELECT
-        c.first_name,
-        c.last_name,
-        v.vehicle_brand,
-        v.vehicle_type,
-        b.booking_endDate,
-        b.booking_status
-    FROM
-        booking b
-    JOIN
-        customer c ON b.customer_id = c.customer_id
-    JOIN
-        vehicle v ON b.vehicle_id = v.vehicle_id
-    WHERE
-        b.booking_status IN ('On Track', 'Extended')
-    LIMIT 5;
-</sql:query>
-
+<%-- 1. Fetch Summary Statistics --%>
 <sql:query var="totalBookings" dataSource="${dbConnection}">
     SELECT COUNT(*) as count FROM booking;
 </sql:query>
@@ -34,16 +16,46 @@
 </sql:query>
 
 <sql:query var="totalRevenue" dataSource="${dbConnection}">
-    SELECT SUM(payment_amount) AS payment FROM payment;
+    SELECT IFNULL(SUM(payment_amount), 0) AS payment FROM payment;
 </sql:query>
 
 <sql:query var="totalRentals" dataSource="${dbConnection}">
-    SELECT COUNT(*) as total_rentals FROM booking;
+    SELECT COUNT(*) as total_rentals FROM booking WHERE booking_status = 'On Track';
 </sql:query>
 
-<<sql:query var="totalNotification" dataSource="${dbConnection}">
+<sql:query var="totalNotification" dataSource="${dbConnection}">
      SELECT COUNT(*) as count FROM notification;
- </sql:query>
+</sql:query>
+
+<%-- 2. Fetch Latest Notification for the Banner --%>
+<sql:query var="latestNotif" dataSource="${dbConnection}">
+    SELECT notification_type, notification_description, notification_date
+    FROM notification
+    ORDER BY notification_date DESC LIMIT 1;
+</sql:query>
+
+<%-- 3. Fetch Upcoming Returns --%>
+<sql:query var="upcomingReturns" dataSource="${dbConnection}">
+    SELECT
+        c.first_name, c.last_name,
+        v.vehicle_brand, v.vehicle_type,
+        b.booking_endDate, b.booking_status
+    FROM booking b
+    JOIN customer c ON b.customer_id = c.customer_id
+    JOIN vehicle v ON b.vehicle_id = v.vehicle_id
+    WHERE b.booking_status IN ('On Track', 'Extended')
+    ORDER BY b.booking_endDate ASC
+    LIMIT 5;
+</sql:query>
+
+<%-- 4. Fetch Top Performing Vehicle (Vehicle of the Month) --%>
+<sql:query var="topVehicle" dataSource="${dbConnection}">
+    SELECT v.vehicle_brand, v.vehicle_type, v.vehicle_image, COUNT(b.booking_id) as total_uses
+    FROM vehicle v
+    JOIN booking b ON v.vehicle_id = b.vehicle_id
+    GROUP BY v.vehicle_id
+    ORDER BY total_uses DESC LIMIT 1;
+</sql:query>
 
 <!doctype html>
 <html lang="en">
@@ -68,7 +80,6 @@
           <li><a href="<%= request.getContextPath() %>/manageReviews"><span>Reviews</span></a></li>
           <li><a href="<%= request.getContextPath() %>/manageNotification"><span>Notifications</span></a></li>
           <li><a href="<%= request.getContextPath() %>/report"><span>Reports</span></a></li>
-          <li><a href="<%= request.getContextPath() %>/settings"><span>Settings</span></a></li>
         </ul>
       </nav>
       <a href="<%= request.getContextPath() %>/logout" class="logout"><span>Logout</span></a>
@@ -107,19 +118,20 @@
           <div class="content-box">
             <h3>Latest Notification</h3>
             <div class="promo-banner">
-              <p>
-                Flash Sale: Use promo code <strong>"DRIVE2026"</strong> to offer
-                clients a flat <strong>12% discount</strong> on all SUV rentals.
-              </p>
-              <small
-                style="
-                  color: #c53030;
-                  display: block;
-                  margin-top: 12px;
-                  font-weight: 600;
-                "
-                >Valid until April 15, 2026</small
-              >
+              <c:choose>
+                  <c:when test="${not empty latestNotif.rows}">
+                      <p>
+                        <strong><c:out value="${latestNotif.rows[0].notification_type}"/>:</strong>
+                        <c:out value="${latestNotif.rows[0].notification_description}"/>
+                      </p>
+                      <small style="color: #64748b; display: block; margin-top: 12px; font-weight: 600;">
+                        Posted on: <c:out value="${latestNotif.rows[0].notification_date}"/>
+                      </small>
+                  </c:when>
+                  <c:otherwise>
+                      <p>No active notifications found in the system.</p>
+                  </c:otherwise>
+              </c:choose>
             </div>
           </div>
 
@@ -161,17 +173,23 @@
         <section class="right-col">
           <div class="content-box car-highlight">
             <h3>Vehicle of the Month</h3>
-            <img src="<%= request.getContextPath() %>/Assets/Background.jpg" alt="Skoda SUV" />
-            <div class="car-info">
-              <span class="badge">Most Requested</span>
-              <strong>Skoda SUV Ti-1000</strong>
-              <p><strong>Category:</strong> Premium Utility</p>
-              <p>
-                The Ti-1000 series continues to dominate the rental charts due
-                to its exceptional fuel efficiency and European safety
-                standards. Perfect for long-distance family travel.
-              </p>
-            </div>
+            <c:choose>
+                <c:when test="${not empty topVehicle.rows}">
+                    <img src="<%= request.getContextPath() %>/Assets/${topVehicle.rows[0].vehicle_image}" alt="Top Vehicle" />
+                    <div class="car-info">
+                      <span class="badge">Most Requested</span>
+                      <strong><c:out value="${topVehicle.rows[0].vehicle_brand} ${topVehicle.rows[0].vehicle_type}"/></strong>
+
+                      <p>
+                        Based on recent analytics, this vehicle has the highest demand in your fleet,
+                        consistently maintaining high utilization rates.
+                      </p>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <p>No vehicle performance data available yet.</p>
+                </c:otherwise>
+            </c:choose>
           </div>
         </section>
       </div>

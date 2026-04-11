@@ -8,9 +8,6 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* ========================================
-   RESET & GLOBAL
-======================================== */
 * {
   margin: 0;
   padding: 0;
@@ -938,7 +935,7 @@ nav {
       <nav>
         <div class="nav_header">
           <div class="nav_logo">
-            <a href="#" class="logo"><span>RentAll</span></a>
+            <a href="<%= request.getContextPath() %>/"class="logo"><span>RentAll</span></a>
           </div>
           <div class="nav_menu_btn" id="menu-btn">
             <i class="ri-menu-line"></i>
@@ -951,8 +948,8 @@ nav {
           <li><a href="#client">Contact Us</a></li>
         </ul>
         <div class="nav_btns">
-          <a href="#" class="btn btn--outline">Login</a>
-          <a href="#" class="btn">Register</a>
+          <a href="<%= request.getContextPath() %>/login" class="btn btn--outline">Login</a>
+          <a href="<%= request.getContextPath() %>/register" class="btn">Register</a>
         </div>
       </nav>
 
@@ -1315,8 +1312,7 @@ nav {
 
   </div>
 </section>
-
-    <!-- ========== FOOTER ========== -->
+>
     <footer class="footer">
       <div class="section_container footer_container">
         <div class="footer_col">
