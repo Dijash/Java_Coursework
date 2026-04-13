@@ -54,4 +54,7 @@ public class Customer {
     public String getGender() { return gender; }
     public String getReferral_code() { return referral_code; }
     public Timestamp getCreated_at() { return created_at; }
+    public String getFullName() {
+        return first_name + " " + last_name;
+    }
 }

@@ -20,8 +20,8 @@ public class AdminDAO {
                 "LIMIT 5";
 
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+             PreparedStatement statement = conn.prepareStatement(sql);
+             ResultSet rs = statement.executeQuery()) {
 
             while (rs.next()) {
                 String customerFullName = rs.getString("first_name") + " " + rs.getString("last_name");
@@ -42,5 +42,19 @@ public class AdminDAO {
             e.printStackTrace();
         }
         return returns;
+    }
+    public boolean deleteNotification(int notificationId) {
+        String sql = "DELETE FROM notification WHERE notification_id = ?";
+
+        try (Connection conn = util.DBConnection.getConnection();
+             PreparedStatement statement = conn.prepareStatement(sql)) {
+
+            statement.setInt(1, notificationId);
+            return statement.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

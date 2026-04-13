@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95bb078c-d2b8-465c-8706-f9d1225f6fff" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDashboardDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/user/UpdateProfileServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/user/UserServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/User/bookingDetails.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/User/myBookings.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Pages/User/settings.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/admin/DeleteNotificationServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/auth/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/auth/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/filter/AuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filter/AuthFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/AdminDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/User/dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/User/dashboard.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/notifications.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Admin/notifications.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Pages/Root/Home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Pages/Root/Home.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
