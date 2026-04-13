@@ -20,7 +20,6 @@ public class UserDashboardDAO {
         return count;
     }
 
-    // 2. Get Completed Trips Count
     public int getCompletedTripsCount(int customerId) {
         int count = 0;
         String sql = "SELECT COUNT(*) FROM booking WHERE customer_id = ? AND booking_status = 'Completed'";

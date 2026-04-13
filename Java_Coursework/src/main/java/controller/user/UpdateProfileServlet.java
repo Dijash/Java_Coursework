@@ -22,18 +22,15 @@ public class UpdateProfileServlet extends HttpServlet {
             return;
         }
 
-        // Get parameters from the form
         String newUsername = request.getParameter("username");
         String newPhone = request.getParameter("phone");
         String newLicense = request.getParameter("license");
         String newAddress = request.getParameter("address");
         String newPassword = request.getParameter("password");
 
-        // Logic to update database via DAO
         UserDAO dao = new UserDAO();
 
-        // Handle password hashing if a new password was provided
-        String passwordToSave = currentUser.getPassword(); // Keep old if empty
+        String passwordToSave = currentUser.getPassword();
         if (newPassword != null && !newPassword.trim().isEmpty()) {
             passwordToSave = PasswordUtil.getHashPassword(newPassword);
         }
@@ -48,7 +45,6 @@ public class UpdateProfileServlet extends HttpServlet {
         );
 
         if (success) {
-            // Refresh the session object with new data
             Customer updatedUser = dao.getCustomerByEmail(currentUser.getCustomer_email());
             session.setAttribute("user", updatedUser);
             response.sendRedirect("settings?success=true");

@@ -12,7 +12,6 @@ public class VehicleDAO {
     public boolean addVehicle(int adminId, String brand, String type, String color, String numberPlate, String condition, String status, String image) {
         boolean isAdded = false;
 
-        // SQL Query updated to include vehicle_image
         String sql = "INSERT INTO vehicle (admin_id, customer_id, vehicle_brand, vehicle_type, vehicle_color, vehicle_numberPlate, vehicle_condition, vehicle_status, vehicle_image) " +
                 "VALUES (?, NULL, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -42,7 +41,6 @@ public class VehicleDAO {
         return isAdded;
     }
 
-    // Delete method remains exactly the same
     public boolean deleteVehicle(int vehicleId) {
         boolean isDeleted = false;
 
@@ -70,7 +68,6 @@ public class VehicleDAO {
     public boolean updateVehicle(int vehicleId, String brand, String type, String color, String numberPlate, String condition, String status, String image) {
         boolean isUpdated = false;
 
-        // SQL Query updated to include vehicle_image in the SET clause
         String sql = "UPDATE vehicle SET vehicle_brand = ?, vehicle_type = ?, vehicle_color = ?, " +
                 "vehicle_numberPlate = ?, vehicle_condition = ?, vehicle_status = ?, vehicle_image = ? " +
                 "WHERE vehicle_id = ?";
@@ -112,7 +109,6 @@ public class VehicleDAO {
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                // Constructor updated to fetch and pass the vehicle_image column
                 vehicle = new Vehicle(
                         resultSet.getInt("vehicle_id"),
                         resultSet.getString("vehicle_brand"),
@@ -121,7 +117,7 @@ public class VehicleDAO {
                         resultSet.getString("vehicle_numberPlate"),
                         resultSet.getString("vehicle_condition"),
                         resultSet.getString("vehicle_status"),
-                        resultSet.getString("vehicle_image") // Fetch the new image column
+                        resultSet.getString("vehicle_image")
                 );
             }
         } catch (SQLException e) {

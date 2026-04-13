@@ -18,7 +18,6 @@ public class Customer {
     private String password;
     private Timestamp created_at;
 
-    // MANDATORY CONSTRUCTOR - This was missing and causing your error
     public Customer(int customer_id, String first_name, String last_name, String gender,
                     String customer_email, String customer_phoneNo, String customer_dob,
                     String customer_address, String customer_country, String customer_license,
@@ -39,7 +38,6 @@ public class Customer {
         this.created_at = created_at;
     }
 
-    // Getters
     public String getPassword() { return password; }
     public int getCustomer_id() { return customer_id; }
     public String getFirst_name() { return first_name; }

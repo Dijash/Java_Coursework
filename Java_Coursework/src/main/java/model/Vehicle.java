@@ -10,7 +10,6 @@ public class Vehicle {
     private String vehicle_status;
     private String vehicle_image;
 
-    // Updated Constructor
     public Vehicle(int vehicle_id, String vehicle_brand, String vehicle_type,
                    String vehicle_color, String vehicle_numberPlate,
                    String vehicle_condition, String vehicle_status, String vehicle_image) {
@@ -24,7 +23,6 @@ public class Vehicle {
         this.vehicle_image = vehicle_image; // Bind it here
     }
 
-    // Getters
     public int getVehicle_id() { return vehicle_id; }
     public String getVehicle_brand() { return vehicle_brand; }
     public String getVehicle_type() { return vehicle_type; }

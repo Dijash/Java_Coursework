@@ -8,7 +8,6 @@ import java.util.List;
 
 public class BookingDAO {
 
-    // 1. Get all bookings for the main table
     public List<Booking> getAllBookings() {
         List<Booking> bookings = new ArrayList<>();
         String sql = "SELECT b.booking_id, CONCAT(c.first_name, ' ', c.last_name) as customer_name, " +
@@ -41,7 +40,6 @@ public class BookingDAO {
         return bookings;
     }
 
-    // 2. Get a single booking by ID for View/Edit pages
     public Booking getBookingById(int id) {
         String sql = "SELECT b.*, CONCAT(c.first_name, ' ', c.last_name) as customer_name, " +
                 "CONCAT(v.vehicle_brand, ' ', v.vehicle_type) as vehicle_info, v.vehicle_numberPlate " +
@@ -70,7 +68,6 @@ public class BookingDAO {
         return null;
     }
 
-    // 3. Update booking status
     public boolean updateBookingStatus(int id, String status) {
         String sql = "UPDATE booking SET booking_status = ? WHERE booking_id = ?";
         try (Connection conn = DBConnection.getConnection();
@@ -84,7 +81,6 @@ public class BookingDAO {
         }
     }
 
-    // 4. Delete a booking
     public boolean deleteBooking(int id) {
         String sql = "DELETE FROM booking WHERE booking_id = ?";
         try (Connection conn = DBConnection.getConnection();

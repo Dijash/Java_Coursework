@@ -6,7 +6,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet({
         "/admin",
@@ -105,7 +104,6 @@ public class AdminServlet extends HttpServlet {
 
         String path = request.getServletPath();
 
-        // Initialize DAOs only once inside doPost
         BookingDAO bookingDAO = new BookingDAO();
         CustomerDAO customerDAO = new CustomerDAO();
         NotificationDAO notificationDAO = new NotificationDAO();
@@ -125,7 +123,6 @@ public class AdminServlet extends HttpServlet {
             case "/deleteReview":
                 String reviewIdStr = request.getParameter("reviewId");
                 if (reviewIdStr != null) {
-                    // reviewDAO.deleteReview(Integer.parseInt(reviewIdStr));
                 }
                 response.sendRedirect(request.getContextPath() + "/manageReviews");
                 break;

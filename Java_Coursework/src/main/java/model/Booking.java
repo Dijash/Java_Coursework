@@ -12,7 +12,6 @@ public class Booking {
     private String totalPrice; // Added
     private String numberPlate;
 
-    // Constructor used by BookingDAO (Matches the 8 parameters)
     public Booking(int bookingId, String customerName, String vehicleDetails, String status,
                    Date startDate, Date endDate, String totalPrice, String numberPlate) {
         this.bookingId = bookingId;
@@ -25,7 +24,6 @@ public class Booking {
         this.numberPlate = numberPlate;
     }
 
-    // Getters
     public int getBookingId() { return bookingId; }
     public String getCustomerName() { return customerName; }
     public String getVehicleDetails() { return vehicleDetails; }

@@ -17,7 +17,6 @@ public class Review {
         this.reviewDate = reviewDate;
     }
 
-    // Getters
     public int getReviewId() { return reviewId; }
     public String getCustomerName() { return customerName; }
     public String getReviewDescription() { return reviewDescription; }

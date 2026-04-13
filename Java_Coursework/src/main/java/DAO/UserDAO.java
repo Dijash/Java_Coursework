@@ -44,7 +44,6 @@ public class UserDAO {
         return result;
     }
 
-    // NEW METHOD: Fetches the full customer profile for the session
     public Customer getCustomerByEmail(String email) {
         String sql = "SELECT * FROM customer WHERE customer_email = ?";
 

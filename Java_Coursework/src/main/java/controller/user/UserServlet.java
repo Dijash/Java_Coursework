@@ -9,7 +9,6 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.util.List;
 
-// ADDED "/viewUserBooking" to the patterns
 @WebServlet({"/userDashboard", "/myBookings", "/settings", "/viewUserBooking"})
 public class UserServlet extends HttpServlet {
 

@@ -24,7 +24,6 @@ public class RegisterServlet extends HttpServlet {
 
         try {
 
-            // Get form data
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String dob = request.getParameter("dob");
@@ -38,10 +37,8 @@ public class RegisterServlet extends HttpServlet {
             String referral = request.getParameter("referral");
 
 
-            // Hash password
             String hashedPassword = PasswordUtil.getHashPassword(password);
 
-            // Insert into DB
             Connection con = DBConnection.getConnection();
 
             String sql = "INSERT INTO customer (first_name, last_name, gender, password, referral_code, customer_username, customer_phoneNo,  customer_email, customer_dob, customer_address, customer_country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -62,7 +59,6 @@ public class RegisterServlet extends HttpServlet {
 
             statement.executeUpdate();
 
-            // Redirect after success
             response.sendRedirect("login");
 
         } catch (Exception e) {

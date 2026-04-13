@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setMaxInactiveInterval(30 * 60);
 
-        // Admin Login
+
         if ("admin@gmail.com".equals(email) && "admin".equals(password)) {
             session.setAttribute("email", email);
             session.setAttribute("role", "admin");
@@ -40,14 +40,12 @@ public class LoginServlet extends HttpServlet {
         String result = dao.checkLogin(email, password);
 
         if (result.equals("success")) {
-            // THE FIX: Fetch the customer object and save it to the session
             Customer loggedInCustomer = dao.getCustomerByEmail(email);
 
-            session.setAttribute("user", loggedInCustomer); // UserServlet needs this!
+            session.setAttribute("user", loggedInCustomer);
             session.setAttribute("email", email);
             session.setAttribute("role", "customer");
 
-            // Redirect directly to the dashboard after login
             response.sendRedirect(request.getContextPath() + "/userDashboard");
 
         } else if (result.equals("wrong_password")) {
