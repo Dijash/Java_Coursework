@@ -111,7 +111,7 @@
         <div class="user-actions" style="display:flex; gap:1rem; align-items:center;">
           <a href="<%= request.getContextPath() %>/home" style="text-decoration:none; color:var(--text-main); font-weight:600; font-size:0.9rem;">Return to Home</a>
           <div class="dropdown-wrapper">
-            <button class="btn-notif" id="notifBtn">Alerts <span class="notif-badge">${totalNotification.rows[0].count}</span></button>
+            <button class="btn-notif" id="notifBtn">Notifications <span class="notif-badge">${totalNotification.rows[0].count}</span></button>
             <div class="notif-dropdown" id="notifMenu">
               <c:forEach var="n" items="${recentNotifications.rows}">
                 <div class="notif-item"><strong>${n.notification_type}</strong><br>${n.notification_description}</div>

@@ -387,7 +387,7 @@ uri="jakarta.tags.sql" %> <%-- Database Connection --%>
 
           <div class="dropdown-wrapper">
             <button class="btn-notif" id="notifBtn">
-              System Alerts
+              Notifications
               <span class="notif-badge"
                 ><c:out value="${totalNotification.rows[0].count}" default="0"
               /></span>
