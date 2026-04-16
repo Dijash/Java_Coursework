@@ -5,23 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/CSS/LoginStyle.css">
-    <title>Forgot Password</title>
+    <title>Create New Password</title>
   </head>
 
 <%
     String error = (String) request.getAttribute("error");
-    String message = (String) request.getAttribute("message");
-
     if (error != null) {
 %>
     <script>
         alert("<%= error %>");
-    </script>
-<%
-    } else if (message != null) {
-%>
-    <script>
-        alert("<%= message %>");
     </script>
 <%
     }
@@ -29,31 +21,28 @@
   <body style="background-image: url('<%= request.getContextPath() %>/Assets/Background.jpg'); background-size: cover; background-position: center;">
     <div class="main">
       <div class="form-head">
-        <h1>Forgot Password?</h1>
-        <p>No worries, enter your email and we'll send you reset instructions.</p>
+        <h1>Create New Password</h1>
+        <p>Your new password must be different from previous used passwords.</p>
       </div>
 
-      <form id="forgotPasswordForm" action="<%= request.getContextPath() %>/forgotPassword" method="post">
+      <form action="<%= request.getContextPath() %>/resetPassword" method="post">
 
         <div class="field">
-          <label>Email Address</label>
+          <label>New Password</label>
           <div class="field-inner">
             <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="example@gmail.com"
+              type="password"
+              id="newPassword"
+              name="newPassword"
+              placeholder="Enter new password"
               required
+              minlength="6"
             />
           </div>
         </div>
 
-        <button type="submit" class="submit-btn" style="margin-top: 24px;">Send Reset Link</button>
+        <button type="submit" class="submit-btn" style="margin-top: 24px;">Reset Password</button>
       </form>
-
-      <div class="form-foot">
-        Remember your password? <a href="<%= request.getContextPath() %>/login">Back to Login</a>
-      </div>
     </div>
   </body>
 </html>

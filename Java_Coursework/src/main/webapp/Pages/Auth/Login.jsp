@@ -79,7 +79,7 @@
 
         <div class="meta-row">
           <label><input type="checkbox" /> Remember Me</label>
-          <a href="#">Forgot Password?</a>
+          <a href="<%= request.getContextPath() %>/resetPassword">Forgot Password?</a>
         </div>
 
         <button type="submit" class="submit-btn">Sign In</button>
