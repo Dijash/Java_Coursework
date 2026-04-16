@@ -1,7 +1,7 @@
 package controller.auth;
 
 import DAO.UserDAO;
-import model.Customer; // Make sure this import is here!
+import model.Customer;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("email", email);
             session.setAttribute("role", "customer");
 
-            response.sendRedirect(request.getContextPath() + "/userDashboard");
+            response.sendRedirect(request.getContextPath() + "/home");
 
         } else if (result.equals("wrong_password")) {
             request.setAttribute("error", "Wrong password!");

@@ -11,13 +11,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RentAll - Car Rental</title>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/CSS/HomeStyle.css">
 
   </head>
   <body>
 
-    <!-- ========== HEADER / NAV ========== -->
     <header>
       <nav>
         <div class="nav_header">
@@ -36,10 +34,6 @@
         </ul>
         <div class="nav_btns">
           <% if (isLoggedIn) { %>
-
-            <%-- ===== LOGGED-IN STATE ===== --%>
-
-            <%-- Avatar + name + dropdown --%>
             <div class="user_avatar_wrap" id="userAvatarWrap" onclick="toggleUserDropdown()" style="position:relative;display:flex;align-items:center;gap:0.6rem;cursor:pointer;">
 
               <div class="user_avatar">
